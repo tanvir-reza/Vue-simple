@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue JS</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        width: 80%;
+        background-color: white;
+
+        list-style-type: none;
+      }
+      li img {
+        width: 15%;
+        object-fit: cover;
+      }
+      .my_fev {
+        background-color:rgb(210, 30, 150);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="base">
+      <div v-if="showMe">
+        <ul>
+          <li  v-for="book in books" @click="fev_handle(book)" :class="{my_fev:book.is_fav}" >
+            <img :src="book.img" :alt="book.title"  />
+            <h3>{{ book.title }}</h3>
+            <p>{{ book.description }}</p>
+          </li>
+        </ul>
+      </div>
+      <button v-on:click="changeView">
+        <span v-if="showMe">Hide</span>
+        <span v-if="!showMe">Show</span>
+      </button>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
